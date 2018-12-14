@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <button v-on:click="counter++">Increase</button>
+    <button v-on:click="counter--">Decrease</button>
+    <button v-on:click="secondCounter++">Increase 2nd</button>
+    <p>Counter: {{ counter }} | {{ secondCounter}} </p>
+    <p>Result: {{ result() }} | {{ output }}</p>
+
+</div>
+
+</body>
+
+
+</html>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            secondCounter: 0
+        },
+        computed: {
+          output(){
+              console.log('Computed');
+              return this.secondCounter>5?'Greater than 5' : 'Smaller than 5'
+          }
+        },
+        watch: {
+            counter: function(value) {
+                let vm = this;
+                setTimeout(function(){
+                    vm.counter = 0;
+                }, 2000)
+            }
+        },
+
+        methods: {
+            result(){
+                console.log('Method');
+                return this.counter>5?'Greater than 5' : 'Smaller than 5'
+            }
+        }
+    });
+
+</script>
