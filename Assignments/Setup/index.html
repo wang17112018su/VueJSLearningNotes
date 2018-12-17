@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monster Slayer</title>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/foundation.min.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div id="app">
+    <section class="row">
+        <div class="small-6 columns">
+            <h1 class="text-center">YOU</h1>
+            <div class="healthbar">
+                <div class="healthbar text-center" v-bind:style="yourLifeBar">{{yourLife}}
+
+                </div>
+            </div>
+        </div>
+        <div class="small-6 columns">
+            <h1 class="text-center">MONSTER</h1>
+            <div class="healthbar">
+                <div class="healthbar text-center" v-bind:style="monsterLifeBar">{{monsterLife}}
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section v-if="startGame" class="row controls">
+        <div class="small-12 columns">
+            <button @click="startGame=!startGame" id="start-game">START NEW GAME</button>
+        </div>
+    </section>
+    <section v-else class="row controls">
+        <div class="small-12 columns">
+            <button @click="attack(hitPoints(false))" id="attack">ATTACK</button>
+            <button @click="attack(hitPoints(true))" id="special-attack">SPECIAL ATTACK</button>
+            <button @click="heal()" id="heal">HEAL</button>
+            <button @click=runningAway() id="give-up">GIVE UP</button>
+        </div>
+    </section>
+    <section class="row log">
+        <div class="small-12 columns">
+            <ul v-for= "message in attackLog" >
+                <li>
+                    {{message}}
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+</body>
+</html>
+<script src="app.js"></script>
