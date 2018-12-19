@@ -1,5 +1,4 @@
 <template>
-  <div class="row">
     <div class="col-xs-12 col-sm-6">
       <ul class="list-group">
         <li
@@ -9,7 +8,6 @@
         </li>
       </ul>
     </div>
-  </div>
 </template>
 
 <script>
@@ -18,5 +16,7 @@
 </script>
 
 <style scoped>
-
+  div{
+    border: 2px solid yellow;
+  }
 </style>
